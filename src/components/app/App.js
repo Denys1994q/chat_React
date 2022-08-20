@@ -63,6 +63,14 @@ const App = () => {
         { text: "Hi", time: 1660936340815, timeToShow: '9/18/2022 3:13 am', author: "Barerra" },
       ],
     },
+    {
+      name: "Barerr",
+      img: user4,
+      id: 5,
+      messages: [
+        { text: "Hi", time: 1660936340815, timeToShow: '9/18/2022 3:13 am', author: "Barerra" },
+      ],
+    },
   ]);
   // відфільтровані юзери 
   const filteredUsers = users.filter(item => {
