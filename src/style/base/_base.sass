@@ -1,0 +1,251 @@
+*, ::after, ::before
+    margin: 0
+    padding: 0px
+    box-sizing: border-box
+
+html
+    font-size: 62.5%
+
+body
+    padding: 1rem
+    background: white
+
+a
+    text-decoration: none
+    border: none
+    color: inherit
+    &:hover
+        color: inherit
+        text-decoration: none
+
+.container
+    width: 100%
+    height: 100vh
+    padding: 0px 0px
+    background-color: #ebedee
+    display: flex
+    justify-content: space-between
+    &-left
+        width: 40%
+        background: #ebedee
+        &-wrapper
+            padding: 1rem
+        &-logo
+            width: 5rem
+            height: 5rem
+            margin-bottom: 4rem
+            img
+                width: 100%
+        &-inpWrapper
+            position: relative
+            margin-bottom: 2rem
+            &::before
+                content: ''
+                width: 3rem
+                height: 3rem
+                background: url(../../imgs/logo_search.png)
+                background-size: contain
+                position: absolute
+                top: 50%
+                left: 1%
+                transform: translate(0%, -50%)
+                z-index: 10
+        &-inp
+            width: 97%
+            height: 4rem
+            border: 1px solid #b1b1b1
+            border-radius: 20px 20px 20px 20px
+            padding-left: 4rem
+            position: relative
+            background: #f0efef
+            outline: none
+        &-bottom
+            padding-top: 3rem
+            padding-left: 1rem
+            background: white
+            &-title
+                color: #08b8fd
+                font-weight: 600
+                font-size: 2.3rem
+                margin-bottom: 4rem
+            &-list
+                list-style: none
+                height: 30rem
+                overflow-y: scroll
+                li
+                    display: flex
+                    justify-content: space-between
+                    align-items: center
+                    font-size: 1.2rem
+                    margin-bottom: 2rem
+                    padding-bottom: 2rem
+                    border-bottom: 1px solid #b1b1b1
+                &-img
+                    width: 7rem
+                    height: 7rem
+                    img
+                        width: 7rem
+                        height: 7rem
+                        border: 1px solid #fcf6f6
+                        border-radius: 50%
+                &-info
+                    width: 50%
+                    padding-left: 1rem
+                &-time
+                    text-align: right
+                    width: 33%
+                    padding-right: 1rem
+    &-right
+        width: 70%
+        // background: yellow
+        &-top
+            display: flex
+            align-items: center
+            column-gap: 2rem
+            padding: 1rem
+            border-left: 1px solid #b1b1b1
+        &-userImg
+            width: 7rem
+            height: 7rem
+            img
+                width: 7rem
+                height: 7rem
+                border: 1px solid #fcf6f6
+                border-radius: 50%
+        &-userName
+            font-weight: 600
+        &-main
+            padding: 2rem 1rem
+            background: #f0efef
+            height: 37rem
+            border-left: 1px solid #b1b1b1
+            border-top: 1px solid #b1b1b1
+            border-bottom: 1px solid #b1b1b1
+            &-list
+                list-style: none
+                height: 35rem
+                overflow-y: scroll
+                &-left
+                    width: 100%
+                    text-align: left
+                &-right
+                    display: flex
+                    justify-content: end
+                    width: 100%
+                    padding-right: 1rem
+                    text-align: right
+                li
+                    display: flex
+                    align-items: center
+                    color: white
+                &-img
+                    width: 7rem
+                    height: 7rem
+                    display: inline-block
+                    margin-right: 1rem
+                    img
+                        width: 7rem
+                        height: 7rem
+                        border: 1px solid #fcf6f6
+                        border-radius: 50%
+                &-text
+                    display: inline-block
+                    background: #2a1853
+                    padding: 1rem
+                    margin-right: 1rem
+                    border-radius: 20px 20px 20px 20px
+                    &-me
+                        background: #c5c4c4
+                        color: black
+                        display: inline-block
+                        padding: 1rem
+                        border-radius: 20px 20px 20px 20px
+                        // margin-left: 7rem
+                &-time
+                    color: black
+                    font-size: 1.2rem
+                    margin-left: 9rem
+                    margin-bottom: 2rem
+                    &-me
+                        width: 17rem
+                        margin-left: auto
+                        color: black
+                        padding: 1rem
+                        font-size: 1.2rem
+        &-bottom
+            padding: 3rem 1rem
+            border-left: 1px solid #b1b1b1
+            &-typeText
+                position: relative
+                width: 100%
+                display: flex
+                align-items: center
+            &-areaWrapper
+                width: 100%
+                // height: 4.6rem
+                textarea
+                    border-radius: 20px 20px 20px 20px
+                    border: 1px solid #b1b1b1
+                    padding: 1.3rem 5rem 1rem 1rem
+                    width: 100%
+                    outline: none
+                    resize: none
+                textarea::-webkit-scrollbar
+                    width: 0px
+            &-img
+                width: 30px
+                height: 30px
+                cursor: pointer
+                position: absolute
+                top: 50%
+                right: 2rem
+                transform: translate(0, -50%)
+                img
+                    width: 100%
+
+// свойства для скрола. Працюють для Chrom,Safari,Opera
+::-webkit-scrollbar
+    width: .7rem
+::-webkit-scrollbar-track
+    background: #f0efef
+::-webkit-scrollbar-thumb
+    background: #a1a1a1
+
+@media (max-width: 1071px) 
+    html
+        font-size: 52.5%
+
+@media (max-width: 856px) 
+    html
+        font-size: 46.5%
+
+@media (max-width: 470px) 
+    html
+        font-size: 26.5%
+    .container-left-bottom-list-info
+        display: none
+    .container-left-bottom-list-time
+        display: none
+    .container-left
+        width: 35%
+    .container-left-bottom-list li
+        justify-content: center
+    .container-left-bottom
+        padding-top: 1rem
+    .container-left-bottom-title
+        margin-bottom: 1rem
+    .container-left-logo
+        margin-bottom: 2rem
+    .container-left-bottom-list
+        height: 34rem
+    .container-left-wrapper
+        padding: 0
+    .container-right-bottom-img
+        width: 10px
+        height: 10px
+
+@media (max-width: 405px) 
+    .container-left
+        width: 20%
+    .container-right
+        width: 79%
