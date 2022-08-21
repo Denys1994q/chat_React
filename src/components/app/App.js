@@ -16,12 +16,13 @@ import UserList from "./UserList";
 import LoginButton from "./login";
 import LogoutButton from "./logout";
 
+// для авторизації через гугл
 const clientId =
   "325595501509-2f4588ufdpp3ak70ce5dvhtlks9rb90u.apps.googleusercontent.com";
 
 const App = () => {
-  // key
 
+  // авторизація через гугл
   useEffect(() => {
     function start() {
       gapi.client.init({
@@ -29,7 +30,6 @@ const App = () => {
         scope: "",
       });
     }
-
     gapi.load("client:auth2", start);
   });
   
@@ -60,7 +60,7 @@ const App = () => {
         },
         {
           text: "I am having breakfast right now, can`t you wait for 10 minutes?",
-          time: 1660936340842,
+          time: 1660936340847,
           timeToShow: "9/18/2022 9:27 pm",
           author: "me",
         },
@@ -79,7 +79,7 @@ const App = () => {
         },
         {
           text: "Ok",
-          time: 1660936340834,
+          time: 1660936340846,
           timeToShow: "9/18/2022 12:25 am",
           author: "me",
         },
@@ -92,7 +92,7 @@ const App = () => {
       messages: [
         {
           text: "Quickly come to the meeting room",
-          time: 1660936340833,
+          time: 1660936340845,
           timeToShow: "9/18/2022 3:18 am",
           author: "Velazquez",
         },
@@ -105,23 +105,25 @@ const App = () => {
       messages: [
         {
           text: "Hi",
-          time: 1660936340815,
+          time: 1660936340844,
           timeToShow: "9/18/2022 3:13 am",
           author: "Barerra",
         },
       ],
     },
   ]);
+
   // відфільтровані юзери
   const filteredUsers = users.filter((item) => {
     return item.name.toLowerCase().includes(searchValue.toLowerCase());
   });
+
   // коли повідомлення відправлено, запуск ф-ії по зверненню до API для отримання повідомлення-відповіді
   useEffect(() => {
     if (messageSent) {
       const timer = setTimeout(() => {
         getAnswerFromAPI();
-      }, 2000);
+      }, 10000);
       return () => clearTimeout(timer);
     }
   }, [messageSent]);
@@ -146,6 +148,7 @@ const App = () => {
       addMessage();
     }
   };
+
   // вивід у верстку повідомлень юзерів
   const showMessages = users
     .filter((it) => {
@@ -189,6 +192,7 @@ const App = () => {
         );
       });
     });
+
   // додаємо повідомлення в дані контактів, яке ввів юзер
   const addMessage = () => {
     if (textAreaValue !== "") {
@@ -219,7 +223,7 @@ const App = () => {
         ...oldMessages,
         {
           text: textAreaValue,
-          time: date,
+          time: Date.now(),
           timeToShow: showDateAndTime,
           author: "me",
         },
@@ -271,7 +275,7 @@ const App = () => {
     const oldMessages = old.messages; // копія повідомлень активного юзера
     const newMessages = [
       ...oldMessages,
-      { text: res, time: date, timeToShow: showDateAndTime, author: active },
+      { text: res, time: Date.now(), timeToShow: showDateAndTime, author: active },
     ]; // старі повідомлення юзера + нові
     const newItem = { ...old, messages: newMessages }; // оновлений юзер з новими повідомленнями
     const newArray = [
@@ -281,6 +285,7 @@ const App = () => {
     ]; // оновлений масив з новим юзером
     setUsers(newArray);
   };
+  
   // скрол на останнє повідомлення
   useEffect(() => {
     ref.current.scrollTop = ref.current.scrollHeight;
