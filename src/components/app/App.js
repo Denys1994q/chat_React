@@ -32,7 +32,7 @@ const App = () => {
 
     gapi.load("client:auth2", start);
   });
-
+  
   // інпут для пошуку контактів
   const [searchValue, setSearchValue] = useState("");
   // активний юзер (по якому клікнули)
@@ -44,6 +44,7 @@ const App = () => {
   const [height, setHeight] = useState("4.6rem");
   // скрол на останнє повідомлення
   const ref = React.createRef();
+  const [loggedUser, setLoggedUser] = useState(null);
   // дані юзерів з контактів (відразу з локал сторедж, щоб показувалася історія)
   const [users, setUsers] = useLocalStorage("users", [
     {
@@ -301,8 +302,16 @@ const App = () => {
             <img src={logo_person} alt='' />
           </div>
           <div className='container-left-login-wrapper-btns'>
-            <LoginButton />
-            <LogoutButton />
+            {loggedUser ? 
+            <>
+              <div className='container-left-login-wrapper-btns-name'>
+                <div className='container-left-login-wrapper-btns-icon'>
+                  <img src={loggedUser.imageUrl} alt="image_user" />
+                </div>  
+              </div>
+              <LogoutButton setLoggedUser={setLoggedUser} /> 
+            </> : 
+            <LoginButton setLoggedUser={setLoggedUser} />}
           </div>
         </div>
         <div className='container-left-wrapper'>

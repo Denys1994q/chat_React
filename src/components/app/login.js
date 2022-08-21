@@ -2,10 +2,12 @@ import {GoogleLogin} from 'react-google-login';
 
 const clientId = '325595501509-2f4588ufdpp3ak70ce5dvhtlks9rb90u.apps.googleusercontent.com'
 
-const Login = () => {
+const Login = (props) => {
+    const setLoggedUser = props.setLoggedUser;
 
     const onSuccess = (res) => {
-        alert('LOGIN SUCCESS', res.profileObj.email);
+        console.log(res.profileObj)
+        setLoggedUser(res.profileObj)
     }
 
     const onFailure = (res) => {
