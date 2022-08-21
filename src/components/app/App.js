@@ -299,16 +299,11 @@ const App = () => {
       <div className='container-left'>
         <div className='container-left-login-wrapper'>
           <div className='container-left-logo'>
-            <img src={logo_person} alt='' />
+            <img src={loggedUser ? loggedUser.imageUrl : logo_person} alt='' />
           </div>
           <div className='container-left-login-wrapper-btns'>
             {loggedUser ? 
             <>
-              <div className='container-left-login-wrapper-btns-name'>
-                <div className='container-left-login-wrapper-btns-icon'>
-                  <img src={loggedUser.imageUrl} alt="image_user" />
-                </div>  
-              </div>
               <LogoutButton setLoggedUser={setLoggedUser} /> 
             </> : 
             <LoginButton setLoggedUser={setLoggedUser} />}
